@@ -28,15 +28,15 @@ const Home = (props) =>{
                 </TouchableOpacity>
                 <View style={styles.NavContainer}>
                     <View style={styles.NavBar}>
-                        <Pressable onPress={() => props.navigation.navigate(("Detail"))} 
-                            style={styles.IconBeahve} 
-                            android_ripple={{borderless:true, radius:50}}>
-                       <AntDesign name="plus" size={24} color="black" />
-                        </Pressable>
-                        <Pressable onPress={() => props.navigation.navigate(("Detail"))} 
+                    <Pressable onPress={() => props.navigation.navigate(("Home"))} 
                             style={styles.IconBeahve} 
                             android_ripple={{borderless:true, radius:50}}>
                         <AntDesign name="bars" size={24} color="black" />
+                        </Pressable>
+                        <Pressable onPress={() => props.navigation.navigate(("ADD_Pitch"))} 
+                            style={styles.IconBeahve} 
+                            android_ripple={{borderless:true, radius:50}}>
+                       <AntDesign name="plus" size={24} color="black" />
                         </Pressable>
                         <Pressable onPress={() => props.navigation.navigate(("Detail"))} 
                             style={styles.IconBeahve} 
