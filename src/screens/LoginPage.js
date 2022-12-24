@@ -1,12 +1,20 @@
 import React, { useState } from "react";
 import { StyleSheet,Image,TextInput, Text, View,Pressable ,Button} from "react-native";
 import { TouchableOpacity } from "react-native"; 
-import { AntDesign } from '@expo/vector-icons';
-
+import { useFonts,
+    Montserrat_400Regular,
+    Montserrat_600SemiBold,
+    Montserrat_700Bold
+} from "@expo-google-fonts/montserrat";
 
 const LoginPage = (props) =>{
     const [mail, setmail] = useState('');
     const [password, setpassword] = useState('');
+    let [fontsLoaded] = useFonts({
+        Montserrat_400Regular,
+        Montserrat_600SemiBold,
+        Montserrat_700Bold
+    })
     return(
         <View style={styles.container}>
             <TextInput

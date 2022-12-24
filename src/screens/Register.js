@@ -4,9 +4,19 @@ import { TouchableOpacity } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import DatePicker,{ getFormatedDate } from 'react-native-modern-datepicker';
 import SelectDropdown from "react-native-select-dropdown";
+import { useFonts,
+    Montserrat_400Regular,
+    Montserrat_600SemiBold,
+    Montserrat_700Bold
+} from "@expo-google-fonts/montserrat";
 
 
 const LoginPage = (props) =>{
+    let [fontsLoaded] = useFonts({
+        Montserrat_400Regular,
+        Montserrat_600SemiBold,
+        Montserrat_700Bold
+    })
     const [mail, setmail] = useState('');
     const [password, setpassword] = useState('');
     const [conpassword, setconpassword] = useState('');
@@ -65,7 +75,7 @@ const LoginPage = (props) =>{
                     selected={getFormatedDate(new Date(), 'jYYYY/jMM/jDD')}
                     mode="calendar"
                     minuteInterval={30}
-                    style={{ borderRadius: 10 }}
+                    style={styles.datep}
                     value={selectedDate}
             />
             <SelectDropdown
@@ -105,12 +115,6 @@ const LoginPage = (props) =>{
                     onPress={() => props.navigation.navigate(("Home"))}
                 >
                 <Text style={styles.text}>Register</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-                    style={styles.btn}
-                    onPress={() =>nchofconsole()}
-                >
-                <Text style={styles.text}>bit nchof console</Text>
             </TouchableOpacity>
         </View>
     )
@@ -171,6 +175,11 @@ const styles = StyleSheet.create({
         borderColor: 'gray',
         borderWidth: 1,
         margin: 10,
+      },
+      datep:{
+        width:'75%',
+        height:'30%',
+        borderRadius: 10,
       },
     dropdown:{
         width: '80%',
