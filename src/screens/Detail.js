@@ -4,29 +4,24 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Feather from "@expo/vector-icons/Feather";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const Detail = (props) =>{
+const Detail = ({navigation,route}) =>{
+    const pitch = route.params;
     return (
         <View style={styles.container}>
             <View style={styles.header}>
-                <TouchableOpacity onPress={() => props.navigation.goBack()}>
+                <TouchableOpacity onPress={() => navigation.goBack()}>
                     <Feather name="chevron-left" color="#FFF" size={25}/>
                 </TouchableOpacity>
                     <Feather name="shopping-cart" color="#FFF" size={25}/>
             </View>
-            <Image source={require('../img/berna.jpg')} style={styles.img}/>
+            <Image source={pitch.img} style={styles.img}/>
             <View style={styles.count3}>
-                <Text style={styles.title}>bernab</Text>
-                <Text style={styles.subtitle}>RMA STAD</Text>
+                <Text style={styles.title}>{pitch.name}</Text>
+                <Text style={styles.subtitle}>{pitch.price}</Text>
                 <View style={styles.count2}>
-                    <Text style={{...styles.title,flex:2,marginTop:0}}>choix</Text>
-                    <View style={styles.selected}>
-                    <View  style={styles.c1}/>
-                    </View>
-                <View style={styles.c2}/>
-                <View style={styles.c3}/>
                 </View>
             <Text style={styles.text}>
-                    berna stad on madrid
+                    {pitch.about}
             </Text>
             <View style={styles.cont1}>
             <FontAwesome name="heart-o" color="#000" size={25}/>

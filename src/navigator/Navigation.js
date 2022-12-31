@@ -10,13 +10,12 @@ import Register from "../screens/Register";
 
 const Stack = createStackNavigator();
 const ScreenOptionStyle = {
-    headerShown: false,
+    headerShown: true,
 };
 const HomeStackNavigator = () =>{
     return (
         <Stack.Navigator screenOptions={ScreenOptionStyle}>
-            <Stack.Screen name="SplashScreen" component={SplashScreen}/>
-            <Stack.Screen name="LoginPage" component={LoginPage}/>
+            <Stack.Screen name="Login" component={LoginPage}/>
             <Stack.Screen name="Register" component={Register}/>
             <Stack.Screen name="Home" component={Home}/>
             <Stack.Screen name="ADD_Pitch" component={ADD_Pitch}/>

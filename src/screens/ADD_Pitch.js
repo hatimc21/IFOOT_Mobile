@@ -118,12 +118,12 @@ const ADD_Pitch = (props) =>{
                         android_ripple={{borderless:true, radius:50}}>
                    <AntDesign name="plus" size={24} color="black" />
                     </Pressable>
-                    <Pressable onPress={() => props.navigation.navigate(("Detail"))} 
+                    <Pressable 
                         style={styles.IconBeahve} 
                         android_ripple={{borderless:true, radius:50}}>
                     <AntDesign name="profile" size={24} color="black" />
                     </Pressable>
-                    <Pressable onPress={() => props.navigation.navigate(("LoginPage"))} 
+                    <Pressable onPress={() => props.navigation.navigate(("Login"))} 
                         style={styles.IconBeahve} 
                         android_ripple={{borderless:true, radius:50}}>
                     <AntDesign name="logout" size={24} color="black" />

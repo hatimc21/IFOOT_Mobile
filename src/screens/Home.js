@@ -9,33 +9,52 @@ import { TouchableOpacity } from "react-native";
 import { processFontFamily } from "expo-font";
 import { AntDesign } from '@expo/vector-icons';
 import pitches from "../const/pitches";
+import COLORS from "../const/colors";
 const width = Dimensions.get("screen").width/2-30;
-const Card = ({pitch})=>{
-   return <View style={styles.card}>
-    <View  style={{height: 90, alignItems: 'center'}}>
-        <Image style={{flex:1, resizeMode:'contain'}} source={pitch.img}/>
-    </View>
-    <Text style={{fontWeight:"bold",fontSize:17, marginTop:10}}>
-        {pitch.name}
-    </Text>
-    <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              marginTop: 5,
-            }}>
-            <Text style={{fontSize: 19, fontWeight: 'bold'}}>
-              {pitch.price} dh/h
-            </Text>
-    </View>
-   </View>;
-};
 const Home = (props) =>{
     let [fontsLoaded] = useFonts({
         Montserrat_400Regular,
         Montserrat_600SemiBold,
         Montserrat_700Bold
     })
+    const Card = ({pitch})=>{
+        return (
+         <TouchableOpacity onPress={() => props.navigation.navigate("Detail",pitch)}>
+             <View style={styles.card}>
+         <View  style={{height: 90, alignItems: 'center'}}>
+             <Image style={{flex:1, resizeMode:'contain'}} source={pitch.img}/>
+         </View>
+         <Text style={{fontWeight:"bold",fontSize:17, marginTop:10}}>
+             {pitch.name}
+         </Text>
+         <View
+                 style={{
+                   flexDirection: 'row',
+                   justifyContent: 'space-between',
+                   marginTop: 5,
+                 }}>
+                 <Text style={{fontSize: 19, fontWeight: 'bold'}}>
+                   {pitch.price} dh/h
+                 </Text>
+                 <View
+                   style={{
+                     height: 25,
+                     width: 25,
+                     backgroundColor: COLORS.green,
+                     borderRadius: 5,
+                     justifyContent: 'center',
+                     alignItems: 'center',
+                   }}>
+                   <Text
+                     style={{fontSize: 22, color: COLORS.white, fontWeight: 'bold'}}>
+                     +
+                   </Text>
+                 </View>
+         </View>
+        </View>
+         </TouchableOpacity>
+        );
+     };
     return (
         <SafeAreaView style={{flex: 1}}>
             <View style={styles.container}>
@@ -68,12 +87,12 @@ const Home = (props) =>{
                             android_ripple={{borderless:true, radius:50}}>
                        <AntDesign name="plus" size={24} color="black" />
                         </Pressable>
-                        <Pressable onPress={() => props.navigation.navigate(("Detail"))} 
+                        <Pressable
                             style={styles.IconBeahve} 
                             android_ripple={{borderless:true, radius:50}}>
                         <AntDesign name="profile" size={24} color="black" />
                         </Pressable>
-                        <Pressable onPress={() => props.navigation.navigate(("LoginPage"))} 
+                        <Pressable onPress={() => props.navigation.navigate(("Login"))} 
                             style={styles.IconBeahve} 
                             android_ripple={{borderless:true, radius:50}}>
                         <AntDesign name="logout" size={24} color="black" />
