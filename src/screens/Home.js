@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Image, Text, View, SafeAreaView, Pressable } from "react-native";
+import { StyleSheet, Image, Text, View, Pressable, FlatList, Dimensions,SafeAreaView } from "react-native";
 import { useFonts,
     Montserrat_400Regular,
     Montserrat_600SemiBold,
@@ -8,7 +8,28 @@ import { useFonts,
 import { TouchableOpacity } from "react-native"; 
 import { processFontFamily } from "expo-font";
 import { AntDesign } from '@expo/vector-icons';
-
+import pitches from "../const/pitches";
+const width = Dimensions.get("screen").width/2-30;
+const Card = ({pitch})=>{
+   return <View style={styles.card}>
+    <View  style={{height: 90, alignItems: 'center'}}>
+        <Image style={{flex:1, resizeMode:'contain'}} source={pitch.img}/>
+    </View>
+    <Text style={{fontWeight:"bold",fontSize:17, marginTop:10}}>
+        {pitch.name}
+    </Text>
+    <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              marginTop: 5,
+            }}>
+            <Text style={{fontSize: 19, fontWeight: 'bold'}}>
+              {pitch.price} dh/h
+            </Text>
+    </View>
+   </View>;
+};
 const Home = (props) =>{
     let [fontsLoaded] = useFonts({
         Montserrat_400Regular,
@@ -16,16 +37,25 @@ const Home = (props) =>{
         Montserrat_700Bold
     })
     return (
+        <SafeAreaView style={{flex: 1}}>
             <View style={styles.container}>
-                <Image  source={require('../img/berna.jpg')} style={styles.img}/>
-                <Text style={styles.title}>Berna stad</Text>
-                <Text>balalallala</Text>
-                <TouchableOpacity 
-                    style={styles.btn}
-                    onPress={() => props.navigation.navigate(("Detail"))}
-                >
-                <Text style={styles.text}>Next</Text>
-                </TouchableOpacity>
+                <View>
+                    <Text style={{fontSize: 25, fontWeight: 'bold'}}>Welcome to</Text>
+                    <Text style={{fontSize: 38, color: '#00B761', fontWeight: 'bold'}}>
+                        IFOOT
+                    </Text>
+                </View>
+                <FlatList 
+                    columnWrapperStyle={{justifyContent:'space-between'}}
+                    contentContainerStyle={{
+                        marginTop:10,
+                        paddingBottom:50,
+                    }}
+                    numColumns={2} data={pitches}
+                    renderItem={({item}) => {
+                        return <Card pitch={item} />;
+                      }}
+                    />
                 <View style={styles.NavContainer}>
                     <View style={styles.NavBar}>
                     <Pressable onPress={() => props.navigation.navigate(("Home"))} 
@@ -52,6 +82,7 @@ const Home = (props) =>{
 
                 </View>
             </View>
+        </SafeAreaView>
     )
 }
 
@@ -62,7 +93,7 @@ const styles = StyleSheet.create({
         flex:1,
         alignItems:"center",
         justifyContent:"center",
-        backgroundColor:"#121212"
+        backgroundColor: "#fff"
     },
     img:{
         height:"50%",
@@ -101,4 +132,13 @@ const styles = StyleSheet.create({
     IconBeahve:{
         padding: 14,
     },
+    card:{
+        height:225,
+        backgroundColor:"#eee",
+        width,
+        marginHorizontal:2,
+        borderRadius: 10,
+        marginBottom: 20,
+        padding: 15,
+    }
 })
