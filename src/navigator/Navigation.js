@@ -7,6 +7,7 @@ import LoginPage from "../screens/LoginPage";
 import SplashScreen from "../screens/SplashScreen"
 import { StackActions } from "@react-navigation/native";
 import Register from "../screens/Register";
+import Home_user from "../screens/user/Home_user";
 
 const Stack = createStackNavigator();
 const ScreenOptionStyle = {
@@ -20,6 +21,7 @@ const HomeStackNavigator = () =>{
             <Stack.Screen name="Home" component={Home}/>
             <Stack.Screen name="ADD_Pitch" component={ADD_Pitch}/>
             <Stack.Screen name="Detail" component={Detail}/>
+            <Stack.Screen name="Home_user" component={Home_user}/>
         </Stack.Navigator>
     );
 };
