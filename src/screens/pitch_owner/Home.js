@@ -6,10 +6,9 @@ import { useFonts,
     Montserrat_700Bold
 } from "@expo-google-fonts/montserrat";
 import { TouchableOpacity } from "react-native"; 
-import { processFontFamily } from "expo-font";
 import { AntDesign } from '@expo/vector-icons';
-import pitches from "../const/pitches";
-import COLORS from "../const/colors";
+import pitches from "../../const/pitches";
+import COLORS from "../../const/colors";
 const width = Dimensions.get("screen").width/2-30;
 const Home = (props) =>{
     let [fontsLoaded] = useFonts({

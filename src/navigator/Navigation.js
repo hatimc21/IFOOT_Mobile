@@ -1,8 +1,8 @@
 import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
-import Home from "../screens/Home";
-import Detail from "../screens/Detail";
-import ADD_Pitch from "../screens/ADD_Pitch";
+import Home from "../screens/pitch_owner/Home";
+import Detail from "../screens/pitch_owner/Detail";
+import ADD_Pitch from "../screens/pitch_owner/ADD_Pitch";
 import LoginPage from "../screens/LoginPage";
 import SplashScreen from "../screens/SplashScreen"
 import { StackActions } from "@react-navigation/native";

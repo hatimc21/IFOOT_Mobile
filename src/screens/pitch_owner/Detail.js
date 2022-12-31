@@ -6,6 +6,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 const Detail = ({navigation,route}) =>{
     const pitch = route.params;
+    console.log(pitch)
     return (
         <View style={styles.container}>
             <View style={styles.header}>
