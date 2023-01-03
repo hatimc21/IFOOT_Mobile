@@ -9,6 +9,8 @@ import { TouchableOpacity } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import pitches from "../../const/pitches";
 import COLORS from "../../const/colors";
+import { Ionicons } from '@expo/vector-icons';
+
 const width = Dimensions.get("screen").width/2-30;
 const Home_user = (props) =>{
     let [fontsLoaded] = useFonts({
@@ -18,7 +20,7 @@ const Home_user = (props) =>{
     })
     const Card = ({pitch})=>{
         return (
-         <TouchableOpacity onPress={() => props.navigation.navigate("Detail",pitch)}>
+         <TouchableOpacity onPress={() => props.navigation.navigate("Detail_user",pitch)}>
              <View style={styles.card}>
          <View  style={{height: 90, alignItems: 'center'}}>
              <Image style={{flex:1, resizeMode:'contain'}} source={pitch.img}/>
@@ -46,7 +48,7 @@ const Home_user = (props) =>{
                    }}>
                    <Text
                      style={{fontSize: 22, color: COLORS.white, fontWeight: 'bold'}}>
-                     +
+                     <Ionicons name="md-calendar-outline" size={20} color="black" />
                    </Text>
                  </View>
          </View>

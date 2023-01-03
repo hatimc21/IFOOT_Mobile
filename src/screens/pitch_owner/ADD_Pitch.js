@@ -10,7 +10,9 @@ import { TouchableOpacity } from "react-native";
 import SelectDropdown from "react-native-select-dropdown";
 import * as ImagePicker from 'expo-image-picker';
 
-const ADD_Pitch = (props) =>{
+const ADD_Pitch = ({ navigation, route }) =>{
+    const userid = route.params
+    console.log("userid :",userid)
     let [fontsLoaded] = useFonts({
         Montserrat_400Regular,
         Montserrat_600SemiBold,
@@ -44,13 +46,13 @@ const ADD_Pitch = (props) =>{
 
             <TextInput
                 style={styles.input}
-                placeholder="Name"
+                placeholder="Name *"
                 onChangeText={text => setName(text)}
                 value={Name}
             />
             <TextInput
                 style={styles.input}
-                placeholder="Adresse"
+                placeholder="Adresse *"
                 secureTextEntry
                 onChangeText={text => setadresse(text)}
                 value={Adresse}
@@ -73,21 +75,21 @@ const ADD_Pitch = (props) =>{
             />
             <TextInput
                 style={styles.input}
-                placeholder="Format"
+                placeholder="Format *"
                 secureTextEntry
                 onChangeText={text => setformat(text)}
                 value={Format}
             />
             <TextInput
                 style={styles.input}
-                placeholder="Price"
+                placeholder="Price *"
                 secureTextEntry
                 onChangeText={text => setprice(text)}
                 value={Price}
             />
             <TextInput
                 style={styles.input}
-                placeholder="City"
+                placeholder="City *"
                 secureTextEntry
                 onChangeText={text => setcity(text)}
                 value={City}
@@ -108,12 +110,12 @@ const ADD_Pitch = (props) =>{
 
             <View style={styles.NavContainer}>
                 <View style={styles.NavBar}>
-                    <Pressable onPress={() => props.navigation.navigate(("Home"))} 
+                    <Pressable onPress={() => navigation.navigate(("Home"),userid)} 
                         style={styles.IconBeahve} 
                         android_ripple={{borderless:true, radius:50}}>
                     <AntDesign name="bars" size={24} color="black" />
                     </Pressable>
-                    <Pressable onPress={() => props.navigation.navigate(("ADD_Pitch"))} 
+                    <Pressable onPress={() => navigation.navigate(("ADD_Pitch"))} 
                         style={styles.IconBeahve} 
                         android_ripple={{borderless:true, radius:50}}>
                    <AntDesign name="plus" size={24} color="black" />
@@ -123,7 +125,7 @@ const ADD_Pitch = (props) =>{
                         android_ripple={{borderless:true, radius:50}}>
                     <AntDesign name="profile" size={24} color="black" />
                     </Pressable>
-                    <Pressable onPress={() => props.navigation.navigate(("Login"))} 
+                    <Pressable onPress={() => navigation.navigate(("Login"))} 
                         style={styles.IconBeahve} 
                         android_ripple={{borderless:true, radius:50}}>
                     <AntDesign name="logout" size={24} color="black" />
@@ -138,33 +140,58 @@ const ADD_Pitch = (props) =>{
 export default ADD_Pitch
 
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        alignItems:"center",
-        justifyContent:"center",
-        backgroundColor:"#F5F1F7"
+    container: {
+      flex: 1,
+      padding: 20,
+      alignItems: "center",
+      backgroundColor: "#F5F1F7",
     },
-    img:{
-        height:"50%",
-        width:"120%",
-        resizeMode:"contain",
+    input: {
+      width: "100%",
+      height: 50,
+      borderColor: "#4CAF50",
+      borderWidth: 1,
+      marginTop: 10,
+      padding: 10,
+      borderRadius: 5,
+      backgroundColor: "#FFF",
+      fontSize: 16,
+      fontFamily: "Montserrat_400Regular",
     },
-    title:{
-        color:'#FFF',
-        fontFamily:"Montserrat_700Bold",
-        fontSize:30,
-        marginTop:20
+    btn: {
+      width: "100%",
+      height: 50,
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 5,
+      marginTop: 10,
+      backgroundColor: "#4CAF50",
     },
-    text:{
-        fontFamily:"Montserrat_600SemiBold",
-        fontSize:30,
-        color:'#FFF'
+    text: {
+      fontFamily: "Montserrat_600SemiBold",
+      fontSize: 16,
+      color: "#FFF",
     },
-    btn:{
-        backgroundColor:"#E2443B",
-        paddingHorizontal:60,
-        paddingVertical:12,
-        borderRadius:30
+    btnimg: {
+      width: "100%",
+      height: 50,
+      alignItems: "center",
+      justifyContent: "center",
+      borderRadius: 5,
+      marginTop: 10,
+      backgroundColor: "#FFF",
+    },
+    dropdown: {
+      width: "100%",
+      height: 50,
+      borderColor: "#4CAF50",
+      borderWidth: 1,
+      marginTop: 10,
+      padding: 10,
+      borderRadius: 5,
+      backgroundColor: "#FFF",
+      fontSize: 16,
+      fontFamily: "Montserrat_400Regular",
     },
     NavContainer:{
         position:'absolute',
@@ -179,26 +206,7 @@ const styles = StyleSheet.create({
         borderRadius: 40 ,
     },
     IconBeahve:{
-        padding: 14,
-    },
-    input: {
-        width: '80%',
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        margin: 10,
-      },
-    dropdown:{
-        width: '80%',
-        height: 40,
-        borderColor: 'gray',
-        borderWidth: 1,
-        margin: 10,
-    },
-    btnimg:{
-        backgroundColor:"#9BA100",
-        paddingHorizontal:50,
-        paddingVertical:12,
-        borderRadius:20
-    },
-})
+        padding: 14,
+    },
+  });
+  

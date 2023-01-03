@@ -121,11 +121,11 @@ const LoginPage = (props) =>{
 }
 export default LoginPage
 const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        alignItems:"center",
-        justifyContent:"center",
-        backgroundColor:"#F5F1F7"
+    container: {
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+        backgroundColor: "#F5F1F7"
     },
     img:{
         height:"50%",
@@ -138,26 +138,24 @@ const styles = StyleSheet.create({
         fontSize:30,
         marginTop:20
     },
-    text:{
-        fontFamily:"Montserrat_600SemiBold",
-        fontSize:30,
-        color:'#FFF'
+    text: {
+        fontFamily: "Montserrat_600SemiBold",
+        fontSize: 16,
+        color: "#FFF"
     },
-    tex:{
-        fontFamily:"Montserrat_600SemiBold",
-        fontSize:15,
-        color:'#000000'
-    },
-    btn:{
-        backgroundColor:"#E2443B",
-        paddingHorizontal:60,
-        paddingVertical:12,
-        borderRadius:30
+    btn: {
+        backgroundColor: "#4CAF50",
+        width: "80%",
+        height: 40,
+        alignItems: "center",
+        justifyContent: "center",
+        borderRadius: 5,
     },
     NavContainer:{
-        position:'absolute',
+        paddingTop:15,
+        position:'relative',
         alignItems:'center',
-        bottom: 20,
+        bottom: 25,
     },
     NavBar:{
         flexDirection:'row',
@@ -170,28 +168,27 @@ const styles = StyleSheet.create({
         padding: 14,
     },
     input: {
-        width: '80%',
+        width: "80%",
         height: 40,
-        borderColor: 'gray',
+        borderColor: "#4CAF50",
         borderWidth: 1,
         margin: 10,
-      },
+        padding: 10,
+        borderRadius: 5,
+        backgroundColor: "#FFF"
+    },
       datep:{
         width:'75%',
         height:'30%',
         borderRadius: 10,
       },
     dropdown:{
+        paddingVertical:2,
         width: '80%',
         height: 40,
-        borderColor: 'gray',
+        borderColor: '#4CAF50',
+        borderRadius: 5,
         borderWidth: 1,
         margin: 10,
-    },
-    btnimg:{
-        backgroundColor:"#9BA100",
-        paddingHorizontal:50,
-        paddingVertical:12,
-        borderRadius:20
     },
 })

@@ -4,6 +4,10 @@ const pitches = [
       name: 'berna',
       price: '150',
       img: require('../img/berna.jpg'),
+      images:[
+        {img1: require('../img/berna.jpg')},
+        {img2: require('../img/pitch1.jpg')},
+      ],
       about:
         'berna description',
     },
@@ -13,6 +17,10 @@ const pitches = [
       name: 'pitche 2',
       price: '160',
       img: require('../img/pitch1.jpg'),
+      images:[
+        {img1: require('../img/pitch1.jpg')},
+        {img2: require('../img/berna.jpg')},
+      ],
       about:
         'pitche 2 description',
     },
@@ -21,6 +29,10 @@ const pitches = [
       name: 'pitche 3',
       price: '200',
       img: require('../img/pitch2.jpg'),
+      images:[
+        {img1: require('../img/pitch2.jpg')},
+        {img2: require('../img/berna.jpg')},
+      ],
       about:
         'pitches 3 descreption',
     },
@@ -30,6 +42,10 @@ const pitches = [
       name: 'pitche 4',
       price: '250',
       img: require('../img/pitch3.jpg'),
+      images:[
+        {img1: require('../img/pitch3.jpg')},
+        {img2: require('../img/berna.jpg')},
+      ],
       about:
         'pitche 4 descreption',
     },
@@ -38,6 +54,10 @@ const pitches = [
       name: 'pitche 5',
       price: '170',
       img: require('../img/pitch4.jpg'),
+      images:[
+        {img1: require('../img/pitch4.jpg')},
+        {img2: require('../img/berna.jpg')},
+      ],
       about:
         'pitche 5 descreption',
     },
@@ -46,6 +66,10 @@ const pitches = [
       name: 'pitche 6',
       price: '180',
       img: require('../img/pitch5.jpg'),
+      images:[
+        {img1: require('../img/pitch5.jpg')},
+        {img2: require('../img/berna.jpg')},
+      ],
       about:
         'pitche 6 descreption',
     },

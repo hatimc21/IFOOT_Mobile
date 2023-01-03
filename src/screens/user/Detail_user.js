@@ -4,7 +4,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Feather from "@expo/vector-icons/Feather";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
-const Detail = ({navigation,route}) =>{
+const Detail_user = ({navigation,route}) =>{
     const pitch = route.params;
     console.log(pitch)
     return (
@@ -35,7 +35,7 @@ const Detail = ({navigation,route}) =>{
     )
 }
 
-export default Detail
+export default Detail_user
 
 const styles = StyleSheet.create({
     container:{
