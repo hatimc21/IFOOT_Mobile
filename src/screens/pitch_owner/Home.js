@@ -10,6 +10,8 @@ import { TouchableOpacity } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
 import pitches from "../../const/pitches";
 import COLORS from "../../const/colors";
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+
 const width = Dimensions.get("screen").width / 2 - 30;
 
 const Home = ({ navigation, route }) => {
@@ -47,10 +49,7 @@ const Home = ({ navigation, route }) => {
                                 justifyContent: 'center',
                                 alignItems: 'center',
                             }}>
-                            <Text
-                                style={{ fontSize: 22, color: COLORS.white, fontWeight: 'bold' }}>
-                                +
-                            </Text>
+                            <MaterialCommunityIcons name="details" size={24} color="white" />
                         </View>
                     </View>
                 </View>
@@ -88,11 +87,6 @@ const Home = ({ navigation, route }) => {
                             style={styles.IconBeahve}
                             android_ripple={{ borderless: true, radius: 50 }}>
                             <AntDesign name="plus" size={24} color="black" />
-                        </Pressable>
-                        <Pressable
-                            style={styles.IconBeahve}
-                            android_ripple={{ borderless: true, radius: 50 }}>
-                            <AntDesign name="profile" size={24} color="black" />
                         </Pressable>
                         <Pressable onPress={() => navigation.navigate(("Login"))}
                             style={styles.IconBeahve}
