@@ -10,6 +10,7 @@ import { AntDesign } from '@expo/vector-icons';
 import pitches from "../../const/pitches";
 import COLORS from "../../const/colors";
 import { Ionicons } from '@expo/vector-icons';
+import { Feather } from '@expo/vector-icons';
 
 const width = Dimensions.get("screen").width/2-30;
 const Home_user = (props) =>{
@@ -86,7 +87,7 @@ const Home_user = (props) =>{
                         <Pressable  onPress={() => props.navigation.navigate(("Nearby"))}
                             style={styles.IconBeahve} 
                             android_ripple={{borderless:true, radius:50}}>
-                       <AntDesign name="plus" size={24} color="black" />
+                       <Feather name="map-pin" size={24} color="black" />
                         </Pressable>
                         <Pressable
                             style={styles.IconBeahve} 

@@ -8,6 +8,8 @@ const pitches = [
         {img1: require('../img/berna.jpg')},
         {img2: require('../img/pitch1.jpg')},
       ],
+      latitude:31.6273,
+      longitude:-7.9826,
       about:
         'berna description',
     },
@@ -21,6 +23,8 @@ const pitches = [
         {img1: require('../img/pitch1.jpg')},
         {img2: require('../img/berna.jpg')},
       ],
+      latitude:31.6315,
+      longitude:-7.9822,
       about:
         'pitche 2 description',
     },
@@ -33,6 +37,8 @@ const pitches = [
         {img1: require('../img/pitch2.jpg')},
         {img2: require('../img/berna.jpg')},
       ],
+      latitude:31.6290,
+      longitude:-7.9959,
       about:
         'pitches 3 descreption',
     },
@@ -46,6 +52,8 @@ const pitches = [
         {img1: require('../img/pitch3.jpg')},
         {img2: require('../img/berna.jpg')},
       ],
+      latitude:31.6226,
+      longitude:-8.0089,
       about:
         'pitche 4 descreption',
     },
@@ -58,6 +66,8 @@ const pitches = [
         {img1: require('../img/pitch4.jpg')},
         {img2: require('../img/berna.jpg')},
       ],
+      latitude:31.5998,
+      longitude:-8.0273,
       about:
         'pitche 5 descreption',
     },
@@ -70,6 +80,8 @@ const pitches = [
         {img1: require('../img/pitch5.jpg')},
         {img2: require('../img/berna.jpg')},
       ],
+      latitude:31.6295,
+      longitude:-8.0232,
       about:
         'pitche 6 descreption',
     },
