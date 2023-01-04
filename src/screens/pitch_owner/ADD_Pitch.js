@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Image, TextInput, Text, View, Pressable, ScrollView } from "react-native";
+import { StyleSheet, Image, TextInput, Text, View, Pressable, ScrollView, SafeAreaView } from "react-native";
 import {
     useFonts,
     Montserrat_400Regular,
@@ -62,13 +62,13 @@ const ADD_Pitch = ({ navigation, route }) => {
         })();
         console.log(location)
     }, []);
-    const gtpitchmappos = (cord)=>{
-            setSelectedPosition(cord)
-            console.log(selectedPosition)
-            return cord;
+    const gtpitchmappos = (cord) => {
+        setSelectedPosition(cord)
+        console.log(selectedPosition)
+        return cord;
     }
     return (
-        <View style={styles.container}>
+        <SafeAreaView style={styles.container}>
             <ScrollView contentContainerStyle={styles.contentContainer}>
 
                 <TextInput
@@ -125,8 +125,8 @@ const ADD_Pitch = ({ navigation, route }) => {
                     <Text style={{ textAlign: 'center', padding: 10 }}>
                         Click here to pick an image from camera roll
                     </Text>
-                    {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
                 </TouchableOpacity>
+                {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
                 <View>
                     {location ? (
                         <View style={styles.mapContainer}>
@@ -141,7 +141,7 @@ const ADD_Pitch = ({ navigation, route }) => {
                                     longitudeDelta: LONGITUDE_DELTA,
                                 }}
                                 onPress={e => gtpitchmappos(e.nativeEvent.coordinate)}
-                                
+
                             >
                                 {selectedPosition && (
                                     <Marker coordinate={selectedPosition} />
@@ -184,7 +184,7 @@ const ADD_Pitch = ({ navigation, route }) => {
                 </View>
 
             </View>
-        </View>
+        </SafeAreaView>
     )
 }
 
@@ -247,8 +247,8 @@ const styles = StyleSheet.create({
         fontFamily: "Montserrat_400Regular",
     },
     NavContainer: {
-        position: 'absolute',
-        bottom: 20,
+        position: 'relative',
+        bottom: -2,
         alignItems: 'center',
     },
     NavBar: {
