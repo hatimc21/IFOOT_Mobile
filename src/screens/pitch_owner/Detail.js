@@ -6,13 +6,11 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 
 const Detail = ({ navigation, route }) => {
+  
     const pitch = route.params;
     console.log(pitch)
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
-                <Feather name="shopping-cart" color="#474747" size={25} />
-            </View>
             <Image source={pitch.img} style={styles.img} />
             <View style={styles.count3}>
                 <Text style={styles.title}>{pitch.name}</Text>
@@ -22,12 +20,6 @@ const Detail = ({ navigation, route }) => {
                 <Text style={styles.text}>
                     {pitch.about}
                 </Text>
-                <View style={styles.cont1}>
-                    <FontAwesome name="heart-o" color="#000" size={25} />
-                    <TouchableOpacity style={styles.btn}>
-                        <Text style={styles.btnText}>Next</Text>
-                    </TouchableOpacity>
-                </View>
             </View>
         </View>
     )

@@ -8,7 +8,7 @@
     "userInterfaceStyle": "light",
     "jsEngine": "hermes",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/IFOOT.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

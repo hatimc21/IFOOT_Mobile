@@ -83,7 +83,7 @@ const Home_user = (props) =>{
                             android_ripple={{borderless:true, radius:50}}>
                         <AntDesign name="bars" size={24} color="black" />
                         </Pressable>
-                        <Pressable  
+                        <Pressable  onPress={() => props.navigation.navigate(("Nearby"))}
                             style={styles.IconBeahve} 
                             android_ripple={{borderless:true, radius:50}}>
                        <AntDesign name="plus" size={24} color="black" />
