@@ -4,10 +4,6 @@ const pitches = [
       name: 'berna',
       price: '150',
       img: require('../img/berna.jpg'),
-      images:[
-        {img1: require('../img/berna.jpg')},
-        {img2: require('../img/pitch1.jpg')},
-      ],
       latitude:31.6273,
       longitude:-7.9826,
       about:

@@ -88,7 +88,7 @@ const ADD_Pitch = ({ navigation, route }) => {
 
                     buttonStyle={styles.dropdown}
                     data={form}
-                    defaultButtonText="Select the Format of your piitch"
+                    defaultButtonText="Select the Format of your pitch"
                     buttonTextAfterSelection={(selectedItem, index) => {
                         // text represented after item is selected
                         // if data array is an array of objects then return selectedItem.property to render after item is selected

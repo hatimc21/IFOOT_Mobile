@@ -25,7 +25,7 @@ const users = [
         "country": "morocco",
         "social_media_provider": null,
         "social_media_userid": null,
-        "role": 0,
+        "role": 2,
         "created_at": "2023-01-03T21:25:48.000+00:00"
     }
 ]
