@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Linking } from "react";
 import { StyleSheet, Image, TextInput, Text, View, Pressable, ScrollView, SafeAreaView } from "react-native";
 import {
     useFonts,
@@ -16,12 +16,15 @@ import { Dimensions } from 'react-native';
 const { height, width } = Dimensions.get("screen");
 const LATITUDE_DELTA = 0.02;
 const LONGITUDE_DELTA = LATITUDE_DELTA * (width / height);
+import * as FileSystem from 'expo-file-system';
+import axios from "axios";
 
 const ADD_Pitch = ({ navigation, route }) => {
     const [location, setLocation] = useState(null);
     const [selectedPosition, setSelectedPosition] = useState(null);
     const userid = route.params
     console.log("userid :", userid)
+    const [pitches, setPiches] = useState([]);
     let [fontsLoaded] = useFonts({
         Montserrat_400Regular,
         Montserrat_600SemiBold,
@@ -30,11 +33,36 @@ const ADD_Pitch = ({ navigation, route }) => {
     const [Name, setName] = useState('');
     const [Adresse, setadresse] = useState('');
     const [Format, setformat] = useState('');
-    const [Price, setprice] = useState('');
+    const [Price, setprice] = useState(0);
     const [City, setcity] = useState('');
-    const form = ["4x4", "5x5", "6x6", "7x7", "8x8", "9x9", "10x10", "11x11"];
+    const form = ["4*4", "5*5", "6*6", "7*7", "8*8", "9*9", "10*10", "11*11"];
     const [image, setImage] = useState(null);
+    const [imageu, setImageu] = useState(null);
+    const [imagename, setImagename] = useState('');
+    const [Heureopen, setHeureopen] = useState('');
+    const [Heureclose, setHeureclose] = useState('');
+    const [Address, setAddress] = useState('');
+    function handleUpload() {
+        const counter = pitches.length + 1
+        setImagename('pitch' + counter + '.jpg');
+        let prix = parseFloat(Price)
+        console.log(typeof(prix))
+        try {
+            axios.post('http://192.168.137.1:8080/pitches/addpitch?latitude='+selectedPosition.latitude+'&longitude='+selectedPosition.longitude+'&image='+imagename+'&iduser='+userid+'&name='+Name+'&address='+Address+'&city='+City+'&format='+Format+'&price='+prix+'&heureopen='+Heureopen+'&heureclose='+Heureclose)
+                .then(response => {
+                    console.log(response);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
 
+        } catch (error) {
+            console.error(error);
+        }
+        console.log("test");
+        // data.append('imageFile', setFile(image));
+        // console.log('hadi data',data)
+    }
     const pickImage = async () => {
         // No permissions request is necessary for launching the image library
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -43,11 +71,11 @@ const ADD_Pitch = ({ navigation, route }) => {
             aspect: [4, 3],
             quality: 1,
         });
-
         console.log(result);
 
         if (!result.canceled) {
-            setImage(result.assets[0].uri);
+            setImage(result);
+            setImageu(result.assets[0].uri)
         }
     };
     useEffect(() => {
@@ -60,11 +88,21 @@ const ADD_Pitch = ({ navigation, route }) => {
             let location = await Location.getCurrentPositionAsync({});
             setLocation(location);
         })();
-        console.log(location)
+        console.log(location.latitude)
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://192.168.137.1:8080/pitches');
+                setPiches(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
+        console.log('hadi lenght ' + pitches.length)
     }, []);
     const gtpitchmappos = (cord) => {
         setSelectedPosition(cord)
-        console.log(selectedPosition)
+        console.log(selectedPosition.latitude)
         return cord;
     }
     return (
@@ -80,7 +118,6 @@ const ADD_Pitch = ({ navigation, route }) => {
                 <TextInput
                     style={styles.input}
                     placeholder="Adresse *"
-                    secureTextEntry
                     onChangeText={text => setadresse(text)}
                     value={Adresse}
                 />
@@ -99,34 +136,46 @@ const ADD_Pitch = ({ navigation, route }) => {
                         // if data array is an array of objects then return item.property to represent item in dropdown
                         return item
                     }}
-                />
-                <TextInput
-                    style={styles.input}
-                    placeholder="Format *"
-                    secureTextEntry
-                    onChangeText={text => setformat(text)}
+                    onChangeSearchInputText={text => setformat(text)}
                     value={Format}
                 />
                 <TextInput
                     style={styles.input}
+                    keyboardType='numeric'
                     placeholder="Price *"
-                    secureTextEntry
                     onChangeText={text => setprice(text)}
                     value={Price}
                 />
                 <TextInput
                     style={styles.input}
                     placeholder="City *"
-                    secureTextEntry
                     onChangeText={text => setcity(text)}
                     value={City}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Address *"
+                    onChangeText={text => setAddress(text)}
+                    value={Address}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Heureopen *"
+                    onChangeText={text => setHeureopen(text)}
+                    value={Heureopen}
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Heureclose *"
+                    onChangeText={text => setHeureclose(text)}
+                    value={Heureclose}
                 />
                 <TouchableOpacity style={styles.btn} onPress={pickImage}>
                     <Text style={{ textAlign: 'center', padding: 10 }}>
                         Click here to pick an image from camera roll
                     </Text>
                 </TouchableOpacity>
-                {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+                {image && <Image source={{ uri: imageu }} style={{ width: 200, height: 200 }} />}
                 <View>
                     {location ? (
                         <View style={styles.mapContainer}>
@@ -154,7 +203,7 @@ const ADD_Pitch = ({ navigation, route }) => {
                 </View>
                 <TouchableOpacity
                     style={styles.btn}
-                    onPress={() => console.log("add")}
+                    onPress={handleUpload}
                 >
                     <Text style={styles.text}>ADD</Text>
                 </TouchableOpacity>
@@ -260,7 +309,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     mapContainer: {
-        width: '90%',
+        width: '100%',
         height: 200,
     },
 });

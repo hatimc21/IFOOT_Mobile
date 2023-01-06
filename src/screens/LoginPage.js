@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from "react";
 import { StyleSheet, TextInput, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native";
+import axios from "axios";
 import {
     useFonts,
     Montserrat_400Regular,
@@ -15,27 +16,48 @@ const LoginPage = (props) => {
     const [mail, setmail] = useState('');
     const [password, setpassword] = useState('');
     const [errorMessage, setErrorMessage] = useState(null);
+    const [usert,setusert]= useState(null);
     let [fontsLoaded] = useFonts({
         Montserrat_400Regular,
         Montserrat_600SemiBold,
         Montserrat_700Bold
     })
-    const handleLogin = () => {
-        // Find the user with the matching email and password
-        const user = users.find(user => user.email === mail && user.password === password);
-        if (user) {
-          // User was found, navigate to the "Home" screen
-          if(user.role == 1){
-            props.navigation.navigate("Home",user.id);
-        }else{
-            props.navigation.navigate("Home_user");
-        }
-          
-        } else {
-          // User was not found, display an error message
-          setErrorMessage("Invalid email or password");
-        }
+    
+    const handleLogin = async () => {
+       console.log(await axios.post(
+       'http://192.168.137.1:8080/users/login?email='+mail+'&password='+password))
+       setusert(await axios.post(
+         'http://192.168.137.1:8080/users/login?email='+mail+'&password='+password))
+      console.log('user hada :',usert.data)
+        // const user =  {
+        //     "id": 1,
+        //     "name": "ilyas",
+        //     "email": "ilyas@gmail.com",
+        //     "password": "ilyas",
+        //     "phone": "54984",
+        //     "date_of_birth": "1999-07-02T00:00:00.000+00:00",
+        //     "city": "marrakech",
+        //     "country": "morocco",
+        //     "social_media_provider": null,
+        //     "social_media_userid": null,
+        //     "role": 1,
+        //     "created_at": "2023-01-03T22:56:51.000+00:00"
+        // }
+        
+        if (usert) {
+            // User was found, navigate to the "Home" screen
+             if(usert.data.role == 1){
+              props.navigation.navigate("Home",usert.data.id);
+          }else{
+              props.navigation.navigate("Home_user",usert.data.id);
+          }
+            
+          } else {
+            // User was not found, display an error message
+            setErrorMessage("Invalid email or password");
+          }
       };
+      
       useEffect(() => {
         // Reset the values of the mail and password states when the screen is re-mounted
         setmail("");

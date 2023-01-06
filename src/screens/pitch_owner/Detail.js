@@ -3,7 +3,7 @@ import { StyleSheet, Image, Text, View } from "react-native";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import Feather from "@expo/vector-icons/Feather";
 import { TouchableOpacity } from "react-native-gesture-handler";
-
+import pictures from "../../const/pictures";
 
 const Detail = ({ navigation, route }) => {
   
@@ -11,11 +11,12 @@ const Detail = ({ navigation, route }) => {
     console.log(pitch)
     return (
         <View style={styles.container}>
-            <Image source={pitch.img} style={styles.img} />
+            <Image source={pictures[pitch.id-1].img} style={styles.img} />
             <View style={styles.count3}>
                 <Text style={styles.title}>{pitch.name}</Text>
                 <Text style={styles.subtitle}>{pitch.price} dh / heur</Text>
                 <View style={styles.count2}>
+                <Text style={styles.subtitle}>{pitch.address}</Text>
                 </View>
                 <Text style={styles.text}>
                     {pitch.about}

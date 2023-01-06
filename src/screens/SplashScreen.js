@@ -15,10 +15,10 @@ const SplashScreen = (props) =>{
     return(
         <ImageBackground 
             style={{flex: 1}} 
-            source={require('../img/berna.jpg')} 
+            source
             >
                 <Image 
-                    source={require('../img/Slpash.gif')}  
+                    source  
                     style={{flex: 1}}
                     onLoadEnd={next()}
                     />

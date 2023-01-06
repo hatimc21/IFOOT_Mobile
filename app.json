@@ -1,12 +1,12 @@
 {
   "expo": {
+    "jsEngine": "hermes",
     "name": "IFOOT",
     "slug": "IFOOT",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
-    "jsEngine": "hermes",
     "splash": {
       "image": "./assets/IFOOT.png",
       "resizeMode": "contain",

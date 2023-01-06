@@ -3,6 +3,7 @@ import { StyleSheet, Image, Text, View, ScrollView, SafeAreaView, Switch } from 
 import SelectDropdown from "react-native-select-dropdown";
 import Feather from "@expo/vector-icons/Feather";
 import { Calendar } from 'react-native-calendars';
+import pictures from "../../const/pictures";
 
 
 const Detail_user = ({ navigation, route }) => {
@@ -31,7 +32,7 @@ const Detail_user = ({ navigation, route }) => {
         <View style={styles.header}>
           <Feather name="bookmark" size={24} color="black" />
         </View>
-        <Image source={pitch.img} style={styles.img} />
+        <Image source={pictures[pitch.id-1].img} style={styles.img} />
         <View style={styles.count3}>
           <Text style={styles.title}>{pitch.name}</Text>
           <Text style={styles.subtitle}>{pitch.price} dh / heur</Text>

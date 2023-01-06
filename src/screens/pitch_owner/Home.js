@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect,useState} from "react";
 import { StyleSheet, Image, Text, View, Pressable, FlatList, Dimensions, SafeAreaView } from "react-native";
 import {
     useFonts,
@@ -8,14 +8,129 @@ import {
 } from "@expo-google-fonts/montserrat";
 import { TouchableOpacity } from "react-native";
 import { AntDesign } from '@expo/vector-icons';
-import pitches from "../../const/pitches";
 import COLORS from "../../const/colors";
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import axios from "axios";
+import pictures from "../../const/pictures";
 
 const width = Dimensions.get("screen").width / 2 - 30;
 
 const Home = ({ navigation, route }) => {
     const userid = route.params;
+    const [pitches, setPiches] = useState(null)
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://192.168.137.1:8080/pitches/pitchowner/'+userid);
+                setPiches(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+        fetchData();
+        // setPiches([
+        //     {
+        //         "id": 1,
+        //         "name": "pitch1",
+        //         "address": "Sidi Abbad",
+        //         "format": "5*5",
+        //         "price": 200.0,
+        //         "city": "Marrakesh",
+        //         "heure_open": "8:00",
+        //         "heure_close": "22:00",
+        //         "picture": {
+        //             "id": 1,
+        //             "name": "pitch1.jpg"
+        //         },
+        //         "user": {
+        //             "id": 1,
+        //             "name": "hatim",
+        //             "email": "hatim@gmail.com",
+        //             "password": "hatim",
+        //             "phone": "198448",
+        //             "date_of_birth": "2001-01-01T00:00:00.000+00:00",
+        //             "city": "marrakech",
+        //             "country": "morocco",
+        //             "social_media_provider": null,
+        //             "social_media_userid": null,
+        //             "role": 1,
+        //             "created_at": "2023-01-03T22:56:12.000+00:00"
+        //         },
+        //         "location": {
+        //             "id": 1,
+        //             "longitude": -8.01254,
+        //             "latitude": 31.6539
+        //         }
+        //     },
+        //     {
+        //         "id": 2,
+        //         "name": "pitch2",
+        //         "address": "Rue du jbel Sahro",
+        //         "format": "4*4",
+        //         "price": 180.0,
+        //         "city": "Marrakesh",
+        //         "heure_open": "9:00",
+        //         "heure_close": "23:00",
+        //         "picture": {
+        //             "id": 2,
+        //             "name": "pitch2.jpg"
+        //         },
+        //         "user": {
+        //             "id": 1,
+        //             "name": "hatim",
+        //             "email": "hatim@gmail.com",
+        //             "password": "hatim",
+        //             "phone": "198448",
+        //             "date_of_birth": "2001-01-01T00:00:00.000+00:00",
+        //             "city": "marrakech",
+        //             "country": "morocco",
+        //             "social_media_provider": null,
+        //             "social_media_userid": null,
+        //             "role": 1,
+        //             "created_at": "2023-01-03T22:56:12.000+00:00"
+        //         },
+        //         "location": {
+        //             "id": 2,
+        //             "longitude": -8.02348,
+        //             "latitude": 31.6396
+        //         }
+        //     },
+        //     {
+        //         "id": 3,
+        //         "name": "pitch3",
+        //         "address": "daoudiate",
+        //         "format": "6*6",
+        //         "price": 250.0,
+        //         "city": "Marrakesh",
+        //         "heure_open": "10:00",
+        //         "heure_close": "22:00",
+        //         "picture": {
+        //             "id": 3,
+        //             "name": "pitch3.jpg"
+        //         },
+        //         "user": {
+        //             "id": 1,
+        //             "name": "hatim",
+        //             "email": "hatim@gmail.com",
+        //             "password": "hatim",
+        //             "phone": "198448",
+        //             "date_of_birth": "2001-01-01T00:00:00.000+00:00",
+        //             "city": "marrakech",
+        //             "country": "morocco",
+        //             "social_media_provider": null,
+        //             "social_media_userid": null,
+        //             "role": 1,
+        //             "created_at": "2023-01-03T22:56:12.000+00:00"
+        //         },
+        //         "location": {
+        //             "id": 3,
+        //             "longitude": -7.99977,
+        //             "latitude": 31.6477
+        //         }
+        //     }
+        // ]
+        // )
+    }, []);
     let [fontsLoaded] = useFonts({
         Montserrat_400Regular,
         Montserrat_600SemiBold,
@@ -26,7 +141,7 @@ const Home = ({ navigation, route }) => {
             <TouchableOpacity onPress={() => navigation.navigate(("Detail"), pitch)}>
                 <View style={styles.card}>
                     <View style={{ height: 90, alignItems: 'center' }}>
-                        <Image style={{ flex: 1, resizeMode: 'contain' }} source={pitch.img} />
+                        <Image style={{ flex: 1, resizeMode: 'contain' }} source={pictures[pitch.id-1].img} />
                     </View>
                     <Text style={{ fontWeight: "bold", fontSize: 17, marginTop: 10 }}>
                         {pitch.name}
