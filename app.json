@@ -26,10 +26,16 @@
         "jsEngine": "jsc",
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.alkamos21.IFOOT"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "662d441a-a4b2-440a-b446-d1b2c9fb4e93"
+      }
     }
   }
 }

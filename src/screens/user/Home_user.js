@@ -220,7 +220,7 @@ const Home_user = ({navigation,route}) => {
                                 <Feather name="map-pin" size={24} color="black" />
                             </Pressable>
                             <Pressable
-                                onPress={() => navigation.navigate(("Event_user"))}
+                                onPress={() => navigation.navigate(("Event_user"),userid)}
                                 style={styles.IconBeahve}
                                 android_ripple={{ borderless: true, radius: 50 }}>
                                 <MaterialIcons name="event-available" size={24} color="black" />

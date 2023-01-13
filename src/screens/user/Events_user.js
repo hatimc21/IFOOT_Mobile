@@ -12,7 +12,7 @@ import COLORS from "../../const/colors";
 import { Ionicons } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
-
+import axios from "axios";
 const width = Dimensions.get("screen").width / 2 - 30;
 
 
@@ -22,61 +22,61 @@ const Event_user = ({ navigation, route }) => {
 
     useEffect(() => {
 
-        // const fetchData = async () => {
-        //     try {
-        //         const response = await axios.get('http://192.168.137.1:8080/events');
-        //         setEvenets(response.data);
-        //     } catch (error) {
-        //         console.error(error);
-        //     }
-        // };
-        // fetchData();
-        setEvenets([
-            {
-                "id": 1,
-                "date": "2023-01-07",
-                "heure_debut": "10:00",
-                "heure_fin": "12:00",
-                "id_pitch": 1,
-                "id_user": 2,
-                "number_players": 10,
-                "id_players": [
-                    11,
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7,
-                    8,
-                    9,
-                    10
-                ],
-                "cost": 200.0,
-                "ispaid": false
-            },
-            {
-                "id": 2,
-                "date": "2023-01-08",
-                "heure_debut": "09:00",
-                "heure_fin": "10:00",
-                "id_pitch": 2,
-                "id_user": 2,
-                "number_players": 8,
-                "id_players": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7,
-                    8,
-                    9
-                ],
-                "cost": 180.0,
-                "ispaid": false
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://192.168.137.1:8081/events');
+                setEvenets(response.data);
+            } catch (error) {
+                console.error(error);
             }
-        ])
+        };
+        fetchData();
+        // setEvenets([
+        //     {
+        //         "id": 1,
+        //         "date": "2023-01-07",
+        //         "heure_debut": "10:00",
+        //         "heure_fin": "12:00",
+        //         "id_pitch": 1,
+        //         "id_user": 2,
+        //         "number_players": 10,
+        //         "id_players": [
+        //             11,
+        //             2,
+        //             3,
+        //             4,
+        //             5,
+        //             6,
+        //             7,
+        //             8,
+        //             9,
+        //             10
+        //         ],
+        //         "cost": 200.0,
+        //         "ispaid": false
+        //     },
+        //     {
+        //         "id": 2,
+        //         "date": "2023-01-08",
+        //         "heure_debut": "09:00",
+        //         "heure_fin": "10:00",
+        //         "id_pitch": 2,
+        //         "id_user": 2,
+        //         "number_players": 8,
+        //         "id_players": [
+        //             2,
+        //             3,
+        //             4,
+        //             5,
+        //             6,
+        //             7,
+        //             8,
+        //             9
+        //         ],
+        //         "cost": 180.0,
+        //         "ispaid": false
+        //     }
+        // ])
     }, []);
     const Card = ({ event }) => {
         return (

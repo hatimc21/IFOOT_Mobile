@@ -88,7 +88,7 @@ const ADD_Pitch = ({ navigation, route }) => {
             let location = await Location.getCurrentPositionAsync({});
             setLocation(location);
         })();
-        console.log(location.latitude)
+        console.log(location)
         const fetchData = async () => {
             try {
                 const response = await axios.get('http://192.168.137.1:8080/pitches');
@@ -102,7 +102,7 @@ const ADD_Pitch = ({ navigation, route }) => {
     }, []);
     const gtpitchmappos = (cord) => {
         setSelectedPosition(cord)
-        console.log(selectedPosition.latitude)
+        console.log(selectedPosition)
         return cord;
     }
     return (

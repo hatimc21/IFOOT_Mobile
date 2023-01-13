@@ -22,59 +22,59 @@ const Reservation_user = ({ navigation, route }) => {
 
     useEffect(() => {
 
-        // const fetchData = async () => {
-        //     try {
-        //         const response = await axios.get('http://192.168.137.1:8080//reservations/myreservations/?id_user='+userid);
-        //         setReservations(response.data);
-        //     } catch (error) {
-        //         console.error(error);
-        //     }
-        // };
-        // fetchData();
-        setReservations([
-            {
-                "id": 1,
-                "date": "2023-03-25",
-                "heure_debut": "10:00",
-                "cost": 200.0,
-                "ispaid": false,
-                "id_pitch": 1,
-                "id_user": 2,
-                "id_players": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7,
-                    8,
-                    9,
-                    10,
-                    11
-                ]
-            },
-            {
-                "id": 2,
-                "date": "2023-04-25",
-                "heure_debut": "15:00",
-                "cost": 200.0,
-                "ispaid": true,
-                "id_pitch": 1,
-                "id_user": 3,
-                "id_players": [
-                    2,
-                    3,
-                    4,
-                    5,
-                    6,
-                    7,
-                    8,
-                    9,
-                    10,
-                    11
-                ]
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://192.168.137.1:8080//reservations/myreservations/?id_user='+userid);
+                setReservations(response.data);
+            } catch (error) {
+                console.error(error);
             }
-        ])
+        };
+        fetchData();
+        // setReservations([
+        //     {
+        //         "id": 1,
+        //         "date": "2023-03-25",
+        //         "heure_debut": "10:00",
+        //         "cost": 200.0,
+        //         "ispaid": false,
+        //         "id_pitch": 1,
+        //         "id_user": 2,
+        //         "id_players": [
+        //             2,
+        //             3,
+        //             4,
+        //             5,
+        //             6,
+        //             7,
+        //             8,
+        //             9,
+        //             10,
+        //             11
+        //         ]
+        //     },
+        //     {
+        //         "id": 2,
+        //         "date": "2023-04-25",
+        //         "heure_debut": "15:00",
+        //         "cost": 200.0,
+        //         "ispaid": true,
+        //         "id_pitch": 1,
+        //         "id_user": 3,
+        //         "id_players": [
+        //             2,
+        //             3,
+        //             4,
+        //             5,
+        //             6,
+        //             7,
+        //             8,
+        //             9,
+        //             10,
+        //             11
+        //         ]
+        //     }
+        // ])
     }, []);
     const Card = ({ reservation }) => {
         return (

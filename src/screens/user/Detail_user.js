@@ -24,13 +24,18 @@ const Detail_user = ({ navigation, route }) => {
     setSelectedDate(date);
     return date;
   };
+  const handleres=()=>{
+
+  }
   const pitch = route.params;
   console.log(pitch)
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView contentContainerStyle={styles.contentContainer}>
         <View style={styles.header}>
+        <Pressable onPress={handleres}>
           <Feather name="bookmark" size={24} color="black" />
+          </Pressable>
         </View>
         <Image source={pictures[pitch.id-1].img} style={styles.img} />
         <View style={styles.count3}>
